@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Clément Tourret - Réseaux & Télécoms</title>
+    <!-- Polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Icônes FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-alt: #f1f5f9;
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --primary-soft: #eff6ff;
+            --cyan: #06b6d4;
+            --cyan-soft: #ecfeff;
+            --emerald: #10b981;
+            --emerald-soft: #ecfdf5;
+            --purple: #8b5cf6;
+            --purple-soft: #f5f3ff;
+            --amber: #f59e0b;
+            --amber-soft: #fffbeb;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-light: #64748b;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(37, 99, 235, 0.04) 0px, transparent 40%),
+                radial-gradient(at 90% 90%, rgba(6, 182, 212, 0.04) 0px, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Barre de navigation fixe */
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .menu a {
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.45rem 0.85rem;
+            font-weight: 600;
+            font-size: 0.88rem;
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .menu a:hover {
+            color: var(--primary);
+            background-color: var(--primary-soft);
+        }
+
+        /* Mise en page globale */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding-top: 5.5rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title i {
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-size: 1.25rem;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: var(--border-color);
+            margin-top: 0.75rem;
+        }
+
+        /* Cartes & Conteneurs */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Section Hero / A propos */
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--emerald-soft);
+            color: var(--emerald);
+            padding: 0.35rem 0.9rem;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background-color: var(--emerald);
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+        }
+
+        .hero-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .profile-img-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 190px;
+            height: 190px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            border: 4px solid var(--bg-card);
+            box-shadow: var(--shadow-lg);
+            background: var(--bg-card-alt);
+        }
+
+        /* Boutons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.35rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            border-radius: 10px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .button-color, .btn-primary {
+            background: var(--primary);
+            color: #ffffff !important;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .button-color:hover, .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-outline {
+            background: #fff;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--bg-card-alt);
+            border-color: var(--border-hover);
+        }
+
+        /* Formation Timeline */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            align-items: flex-start;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .timeline-item:hover {
+            border-color: var(--primary);
+            transform: translateX(4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-icon {
+            background: var(--primary-soft);
+            color: var(--primary);
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.08rem;
+            color: var(--text-main);
+            margin-bottom: 0.35rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        /* Layout avec Média */
+        .media-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            align-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 1.75rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.5rem;
+        }
+
+        .media-layout.reverse {
+            grid-template-columns: 1fr 300px;
+        }
+
+        .media-layout img, .media-layout video {
+            width: 100%;
+            height: auto;
+            max-height: 260px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .media-content h3 {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 0.85rem;
+        }
+
+        .media-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 0.75rem;
+            text-align: justify;
+        }
+
+        .media-content p strong {
+            color: var(--text-main);
+        }
+
+        /* Qualités Grid */
+        .qualities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .quality-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quality-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-hover);
+        }
+
+        .quality-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quality-body {
+            padding: 1.5rem;
+        }
+
+        .quality-body h3 {
+            font-size: 1.15rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quality-body p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            text-align: justify;
+        }
+
+        /* Compétences */
+        .skills-container {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .skill-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-percent {
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+            color: var(--primary);
+            background: var(--primary-soft);
+            padding: 0.2rem 0.5rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--bg-card-alt);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: var(--radius-full);
+            background: linear-gradient(90deg, var(--primary), var(--cyan));
+        }
+
+        .skill-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .sub-skill {
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--primary-light);
+        }
+
+        .languages-box {
+            margin-top: 1.5rem;
+            background: var(--bg-card-alt);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .languages-box h4 {
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        .lang-tag {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            padding: 0.35rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        /* Onglets Projets */
+        .center-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .navbar {
+            position: relative;
+            display: flex;
+            background: var(--bg-card-alt);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-full);
+            padding: 0.35rem;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .navbar a.tab-link {
+            flex: 1;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+            border-radius: var(--radius-full);
+        }
+
+        .navbar a.tab-link.active {
+            color: #ffffff;
+        }
+
+        .indicator {
+            position: absolute;
+            top: 0.35rem;
+            bottom: 0.35rem;
+            background: var(--primary);
+            border-radius: var(--radius-full);
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+            box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+        }
+
+        .content {
+            display: none;
+            animation: fadeIn 0.35s ease-out forwards;
+        }
+
+        .content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Contact & Divers */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-soft);
+            color: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+
+        .contact-info h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-light);
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-info a, .contact-info p {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-layout, .media-layout, .media-layout.reverse {
+                grid-template-columns: 1fr;
+                text-align: left;
+            }
+
+            .profile-img-container {
+                order: -1;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .media-layout img, .media-layout video {
+                max-height: 220px;
+                width: 100%;
+            }
+
+            .menu-container {
+                justify-content: center;
+            }
+
+            .logo {
+                display: none;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Navigation Permanente -->
+    <nav class="menu">
+        <div class="menu-container">
+            <a href="#a-propos" class="logo">
+                <span class="logo-badge">CT</span> Clément Tourret
+            </a>
+            <ul class="nav-links">
+                <li><a href="#a-propos"><i class="fa-solid fa-user"></i> À propos</a></li>
+                <li><a href="#formation"><i class="fa-solid fa-graduation-cap"></i> Formation</a></li>
+                <li><a href="#exp"><i class="fa-solid fa-briefcase"></i> Expérience</a></li>
+                <li><a href="#mes-qualites"><i class="fa-solid fa-award"></i> Qualités</a></li>
+                <li><a href="#mes-competences"><i class="fa-solid fa-layer-group"></i> Compétences</a></li>
+                <li><a href="#mes-projets"><i class="fa-solid fa-folder-open"></i> Projets</a></li>
+                <li><a href="#divers"><i class="fa-solid fa-icons"></i> Divers</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- SECTION : À PROPOS -->
+        <section id="a-propos">
+            <div class="card">
+                <div class="hero-layout">
+                    <div>
+                        <span class="hero-badge">À la recherche d'une opportunité CDI / CDD</span>
+                        <h1 class="hero-title">Portfolio Tourret Clément</h1>
+                        <h2 class="hero-subtitle">Diplômé d'un BUT Réseaux et Télécommunications — Cybersécurité</h2>
+                        <p class="hero-desc">
+                            Bienvenue sur mon portfolio. Je m'appelle Clément, j'ai 22 ans et je suis diplômé d'un BUT Réseaux et Télécommunications parcours cybersécurité à l'IUT de Clermont-Ferrand. Passionné par l'informatique, je souhaite approfondir mes connaissances. J'ai obtenu un baccalauréat technologique avec la spécialité Systèmes d'Information et Numérique (SIN). Déterminé, rigoureux et persévérant, cette filière m'a donné l'envie d'en apprendre davantage sur les réseaux, c'est pourquoi j'ai choisi cette formation. Je suis actuellement à la recherche d’un <strong>CDI ou d'un CDD</strong> dans les domaines des réseaux, de l'administration système et de la cybersécurité.
+                        </p>
+                        <div>
+                            <a href="CV_Tourret_Clement.pdf" class="btn button-color" download="CV_Tourret_Clement.pdf">
+                                <i class="fa-solid fa-download"></i> Mon CV
+                            </a>
+                            <a href="#contact" class="btn btn-outline" style="margin-left: 0.5rem;">
+                                <i class="fa-solid fa-paper-plane"></i> Me contacter
+                            </a>
+                        </div>
+                    </div>
+                    <div class="profile-img-container">
+                        <img src="image000000.jpg" alt="Photo Clément Tourret" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION : FORMATION (Timeline moderne sans image) -->
+        <section id="formation">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Formation</h2>
+                <hr>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fa-solid fa-university"></i></div>
+                    <div class="timeline-content">
+                        <h4>2022 - 2026 : BUT Réseaux et Télécommunications</h4>
+                        <p><strong>IUT de Clermont-Ferrand — UCA (63)</strong></p>
+                        <p>Obtention du diplôme en septembre 2026.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon" style="background: var(--emerald-soft); color: var(--emerald);"><i class="fa-solid fa-file-excel"></i></div>
+                    <div class="timeline-content">
+                        <h4>Été 2025 : Formation Excel</h4>
+                        <p>Tableaux croisés dynamiques et macros.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon" style="background: var(--purple-soft); color: var(--purple);"><i class="fa-solid fa-school"></i></div>
+                    <div class="timeline-content">
+                        <h4>Juin 2022 : Baccalauréat Technologique (Option SIN)</h4>
+                        <p><strong>Lycée Lafayette à Clermont-Ferrand (63)</strong></p>
+                        <p>Obtention du baccalauréat technologique, option Systèmes d'Information Numérique.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION : EXPÉRIENCE PROFESSIONNELLE -->
+        <section id="exp">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Expérience professionnelle</h2>
+                <hr>
+            </div>
+
+            <div class="media-layout">
+                <img src="img/5d7f3e5b7c000080b3703765.webp" alt="Sowilo Network">
+                <div class="media-content">
+                    <h3>Stage chez Sowilo Network à Clermont-Ferrand</h3>
+                    <p>J'ai réalisé un <strong>stage</strong> lors de ma <strong>deuxième année</strong> en <strong>BUT Réseaux et Télécommunications</strong> d'une durée de <strong>10 semaines</strong> dans l'entreprise <strong>Sowilo Network</strong>. Sowilo est une <strong>petite entreprise de service</strong> de <strong>10 employés</strong> qui travaille pour les <strong>professionnels</strong>.</p>
+                    <p>Durant mon stage, j'ai pu réaliser de multiples <strong>tâches</strong> comme du <strong>support téléphonique</strong>, de la <strong>configuration d'appareils</strong> comme des <strong>pare-feux</strong>, des <strong>bornes Wifi</strong> et des <strong>ordinateurs</strong>. J'ai également pu mettre en place des <strong>agents GLPI</strong> lors d'<strong>interventions</strong> ou à distance par le biais d'une <strong>GPO</strong> sur l'<strong>Active Directory</strong>. Cela nous permet de faire le <strong>relevé du parc informatique</strong> du client.</p>
+                    <p>Le sujet de mon <strong>rapport de stage</strong> porte sur l'<strong>installation de pare-feux en haute disponibilité</strong> chez deux <strong>clients partenaires</strong>. Cela a été une <strong>mission enrichissante</strong> pour moi. Vous trouverez mon rapport ci-dessous.</p>
+                    <a href="BUT2-2024-2025-Rapport-Stage-Tourret-Clément.pdf" class="btn button-color" download="BUT2-2024-2025-Rapport-Stage-Tourret-Clément.pdf">
+                        <i class="fa-solid fa-file-pdf"></i> Mon CR
+                    </a>
+                </div>
+            </div>
+
+            <!-- NOUVEL EMPLACEMENT : Expérience professionnelle (Texte à gauche, Image à droite) -->
+            <div class="media-layout reverse">
+                <div class="media-content">
+                    <h3>Stage chez PI Signia à Romagnat</h3>
+                    <p>J'ai réalisé un <strong>stage</strong> lors de ma troisième année de <strong>BUT Réseaux et Télécommunications</strong> d'une durée de <strong>16 semaines</strong> au sein de l'entreprise <strong>PI Signia</strong>. Cette entreprise a été <strong>créée</strong> suite à la séparation de l'entité <strong>PI System Automation</strong></p>
+                    <p>Durant mon stage, j'ai pu réaliser de <strong>multiples tâches</strong> comme du <strong>support utilisateurs</strong> au sein de l'entreprise, via la <strong>préparation de postes informatiques</strong> et de <strong>téléphones professionnels</strong> pour de <strong>nouveaux arrivants</strong>. J'ai également effectué du <strong>dépannage d'imprimantes</strong> et mis en place des <strong>postes informatiques</strong> pour un <strong>client espagnol</strong></p>
+                    <p>Le sujet de mon <strong>rapport de stage</strong> était de <strong>créer le nouveau réseau</strong> de <strong>PI Signia</strong> suite à la séparation de <strong>PI System Automation</strong>. J'ai donc mis en place les <strong>différents serveurs</strong> tels qu'un <strong>contrôleur de domaine</strong>, un <strong>serveur de fichiers</strong>, une <strong>autorité de certification</strong>, un <strong>serveur de sauvegarde</strong> et un <strong>antivirus ESET</strong>. Cette mission a été très <strong>enrichissante</strong> pour moi car j'ai pu découvrir des logiciels tels que <strong>Veeam</strong> que je n'avais jamais utilisés auparavant. Vous trouverez mon rapport ci-dessous.</p>
+                    <a href="#" class="btn button-color">
+                        <i class="fa-solid fa-file-pdf"></i> Mon CR
+                    </a>
+                </div>
+                <img src="Capture d'écran 2026-08-24 153123.png" alt="PI Signia">
+            </div>
+        </section>
+
+        <!-- SECTION : QUALITÉS -->
+        <section id="mes-qualites">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-award"></i> Mes qualités</h2>
+                <hr>
+            </div>
+
+            <div class="qualities-grid">
+                <div class="quality-card">
+                    <img src="img/determination.jpg" alt="Détermination">
+                    <div class="quality-body">
+                        <h3><i class="fa-solid fa-bullseye" style="color: var(--primary);"></i> Détermination</h3>
+                        <p>J'ai envie d'acquérir de nouvelles connaissances et de toujours progresser. Suite aux nombreux projets que j'ai réalisés, j'ai dû faire preuve de détermination pour les mener à bien.</p>
+                    </div>
+                </div>
+
+                <div class="quality-card">
+                    <img src="img/Perseverence.jpg" alt="Persévérance">
+                    <div class="quality-body">
+                        <h3><i class="fa-solid fa-mountain" style="color: var(--emerald);"></i> La persévérance</h3>
+                        <p>J'ai toujours été persévérant. Je n'aime pas perdre ou ne pas comprendre, car j'ai besoin de comprendre pour m'améliorer.</p>
+                    </div>
+                </div>
+
+                <div class="quality-card">
+                    <img src="img/rigoureux.jpg" alt="Rigueur">
+                    <div class="quality-body">
+                        <h3><i class="fa-solid fa-list-check" style="color: var(--purple);"></i> Rigueur</h3>
+                        <p>J'aime être rigoureux dans mon travail et suivre une liste de tâches.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION : COMPÉTENCES -->
+        <section id="mes-competences">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Mes Compétences</h2>
+                <hr>
+            </div>
+
+            <div class="skills-container">
+                <!-- Sécurité -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-title"><i class="fa-solid fa-shield-halved" style="color: var(--primary);"></i> Sécurité : 60%</div>
+                        <div class="skill-percent">60%</div>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+                    <p class="skill-desc">Découverte de la sécurité à travers la configuration de pare-feu et l'initiation au pentesting sur des machines virtuelles. Configuration de DNSSEC avec BIND9. Mise en place d’un SIEM (Splunk) pour centraliser les logs d’un réseau composé de clients Windows et Linux.</p>
+                </div>
+
+                <!-- Réseau -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-title"><i class="fa-solid fa-network-wired" style="color: var(--cyan);"></i> Réseau : 70%</div>
+                        <div class="skill-percent">70%</div>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 70%; background: linear-gradient(90deg, var(--cyan), var(--emerald));"></div></div>
+                    <p class="skill-desc">J'ai <strong>réalisé</strong> de nombreux <strong>travaux pratiques</strong> lors de mon deuxième semestre. Ces travaux ont été réalisés par des groupes de deux personnes sur une <strong>durée</strong> de trois heures. J'ai abordé plusieurs sujets tels que la <strong>configuration</strong> des services suivants : <strong>DHCP</strong>, <strong>FTP</strong>, <strong>SSH</strong>. J'ai aussi appris à configurer un <strong>serveur de messagerie</strong>. De plus, j'ai appris à <strong>manipuler</strong> des <strong>adresses IPv6</strong> et à configurer du <strong>routage inter-VLAN</strong>. J'ai pu terminer la plupart de mes travaux dans le temps imparti, et mon <strong>professeur</strong> était satisfait du travail que j'ai réalisé au cours de la série de travaux pratiques.</p>
+                </div>
+
+                <!-- Télécommunications -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-title"><i class="fa-solid fa-tower-broadcast" style="color: var(--purple);"></i> Télécommunications : 60%</div>
+                        <div class="skill-percent">60%</div>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 60%; background: linear-gradient(90deg, var(--purple), var(--primary));"></div></div>
+                    <p class="skill-desc">J'ai <strong>réalisé</strong> une multitude de <strong>travaux pratiques</strong> sur les réseaux durant le deuxième semestre. Ces travaux pratiques ont été réalisés en <strong>groupe</strong> de deux personnes sur une <strong>durée</strong> de trois heures. J'ai abordé plusieurs sujets tels que le <strong>multiplexage</strong>, la <strong>transmission radio</strong>, l'<strong>échantillonnage de signaux</strong>, la <strong>modulation</strong> et le <strong>filtrage</strong> avec des <strong>filtres passe-bande</strong>. J'ai pu terminer la plupart de ces travaux dans le temps imparti. Pour mener à bien ces travaux, il faut faire preuve de <strong>rigueur</strong> afin de ne pas se tromper dans le montage réalisé. Il est également nécessaire d'avoir un certain niveau de <strong>curiosité</strong> pour rechercher des informations dans la documentation des appareils afin de comprendre leur fonctionnement.</p>
+                </div>
+
+                <!-- Programmation -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-title"><i class="fa-solid fa-code" style="color: var(--amber);"></i> Programmation : 60%</div>
+                        <div class="skill-percent">60%</div>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 60%; background: linear-gradient(90deg, var(--amber), #ef4444);"></div></div>
+                    <p class="skill-desc">Durant le deuxième semestre, j'ai étudié plusieurs <strong>langages de programmation</strong> tels que : <strong>HTML/CSS</strong>, <strong>Node.js</strong>, <strong>PHP</strong>, <strong>BASH</strong> et <strong>Python</strong>. Ces langages m'ont permis de réaliser des <strong>projets</strong> durant l'année, comme le <strong>développement</strong> et l'<strong>amélioration constante</strong> de ce <strong>portfolio</strong>, mais aussi un <strong>mémory en PHP</strong>.</p>
+                    
+                    <div class="sub-skill">
+                        <div class="skill-header">
+                            <span style="font-weight: 600; font-size: 0.9rem;">HTML/CSS : 50%</span>
+                            <span class="skill-percent">50%</span>
+                        </div>
+                        <p class="skill-desc">En <strong>HTML/CSS</strong>, nous avons vu les <strong>bases</strong> au premier semestre, puis nous sommes devenus <strong>autodidactes</strong> sur le langage au deuxième semestre pour <strong>développer</strong> la suite du <strong>portfolio</strong>.</p>
+                    </div>
+
+                    <div class="sub-skill">
+                        <div class="skill-header">
+                            <span style="font-weight: 600; font-size: 0.9rem;">Python : 40%</span>
+                            <span class="skill-percent">40%</span>
+                        </div>
+                        <p class="skill-desc">En <strong>Python</strong>, j'ai vu les <strong>classes</strong> lors de ce deuxième semestre avec la manipulation de <strong>listes avancées</strong> et des <strong>opérations simples</strong> sur un fichier. Je n'ai pas réellement réussi à <strong>maîtriser</strong> ce <strong>langage</strong>.</p>
+                    </div>
+
+                    <div class="sub-skill">
+                        <div class="skill-header">
+                            <span style="font-weight: 600; font-size: 0.9rem;">PHP : 30%</span>
+                            <span class="skill-percent">30%</span>
+                        </div>
+                        <p class="skill-desc">En <strong>PHP</strong>, nous avons <strong>développé</strong> un <strong>sudoku</strong> et un <strong>mémory</strong> en PHP lors des <strong>travaux pratiques</strong>. J'ai donc vu les <strong>fonctions</strong> en PHP et l'appel à une <strong>base de données SQL</strong>.</p>
+                    </div>
+
+                    <div class="sub-skill">
+                        <div class="skill-header">
+                            <span style="font-weight: 600; font-size: 0.9rem;">BASH : 80%</span>
+                            <span class="skill-percent">80%</span>
+                        </div>
+                        <p class="skill-desc">Pour le <strong>Bash</strong>, j'ai suivi des <strong>cours</strong> qui m'ont enseigné à créer des <strong>scripts simples</strong> capables de remplacer des commandes. J'ai pu concevoir un <strong>menu interactif</strong> permettant de lister le contenu d'un répertoire, de compter le nombre de lignes d'un fichier, ou encore de créer un fichier ou un répertoire à l'endroit souhaité. Lors de l'<strong>examen final</strong>, j'ai obtenu la note de <strong>16,25/20</strong>, pour une <strong>moyenne de classe</strong> de <strong>11,02</strong>.</p>
+                    </div>
+                </div>
+
+                <!-- Téléphonie -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-title"><i class="fa-solid fa-phone-volume" style="color: var(--emerald);"></i> Téléphonie : 50%</div>
+                        <div class="skill-percent">50%</div>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+                    <p class="skill-desc">J'ai appris la configuration de <strong>téléphones</strong> ainsi que celle de <strong>softphones</strong> via des <strong>serveurs téléphoniques</strong> (XIVO et WAZO). Configuration de trunks SIP et mise en place de lignes SIP sur des hardphones, softphones et bornes DECT.</p>
+                </div>
+
+                <!-- Virtualisation -->
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <div class="skill-title"><i class="fa-solid fa-server" style="color: var(--primary);"></i> Virtualisation : 60%</div>
+                        <div class="skill-percent">60%</div>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+                    <p class="skill-desc">J’ai appris à faire de la virtualisation avec VirtualBox et j’ai acquis les bases d’Hyper-V lors de séances de travaux pratiques.</p>
+                </div>
+
+                <!-- Langues -->
+                <div class="languages-box">
+                    <h4><i class="fa-solid fa-language"></i> Compétences linguistiques :</h4>
+                    <span class="lang-tag">Anglais : B2</span>
+                    <span class="lang-tag">Espagnol : A2</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION : PROJETS -->
+        <section id="mes-projets">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-folder-open"></i> Mes projets</h2>
+                <hr>
+            </div>
+
+            <!-- Sélecteur d'onglets (BUT1 / BUT2 / BUT3) -->
+            <div class="center-wrapper">
+                <div class="navbar">
+                    <a class="tab-link active" onclick="showTab(this, 'S1')">BUT1</a>
+                    <a class="tab-link" onclick="showTab(this, 'S2')">BUT2</a>
+                    <a class="tab-link" onclick="showTab(this, 'S3')">BUT3</a>
+                    <div class="indicator" id="indicator"></div>
+                </div>
+            </div>
+
+            <div class="tab-content-wrapper">
+                
+                <!-- PROJETS BUT 1 -->
+                <div id="S1" class="content active">
+                    
+                    <!-- SAE 24 -->
+                    <div class="media-layout">
+                        <img src="img/topo projet.png" alt="SAE 24 Topologie">
+                        <div class="media-content">
+                            <h3>SAE 24 : Projet intégratif</h3>
+                            <p><strong>Contexte :</strong> Ce projet a été réalisé en fin de <strong>première année</strong>.</p>
+                            <p><strong>Objectif :</strong> L'objectif de ce projet était de réaliser un <strong>réseau</strong> pour une petite entreprise.</p>
+                            <p><strong>Travail réalisé :</strong> Pour mener à bien ce projet, nous étions organisés en groupes de <strong>quatre personnes</strong> et avions pour contrainte de le réaliser dans un délai de <strong>deux semaines</strong>. Nous disposions de <strong>4 ordinateurs</strong>, deux agissant en tant que <strong>clients</strong> et les deux autres en tant que <strong>serveurs</strong>, l'un sous <strong>Windows</strong> et l'autre sous <strong>Linux</strong>. De plus, nous avions à notre disposition un <strong>switch</strong> et un <strong>routeur</strong>. Notre première tâche consistait à permettre la <strong>communication</strong> entre les machines au sein du réseau, puis à les faire sortir du réseau. Ensuite, nous avions plusieurs tâches à accomplir pour améliorer la qualité de notre réseau, telles que la configuration de <strong>softphones</strong> entre les ordinateurs clients pour permettre une communication vocale. De plus, nous devions configurer un <strong>serveur web</strong>, <strong>téléphonique</strong> et <strong>DHCP</strong>. En outre, il était nécessaire de mettre en place un moyen de contrôler les ordinateurs à <strong>distance</strong>.</p>
+                            <p><strong>Résultat :</strong> Pour mener à bien ce projet, nous devions faire preuve de <strong>rigueur</strong> et travailler <strong>efficacement en équipe</strong>. L'enseignant était <strong>satisfait</strong> de notre travail.</p>
+                            <a href="CR/CR_SAE24.pdf" class="btn button-color" download="SAE24_Tourret_Clement.pdf">
+                                <i class="fa-solid fa-file-pdf"></i> Mon CR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SAE 22 -->
+                    <div class="media-layout reverse">
+                        <div class="media-content">
+                            <h3>SAE 22 : Mesurer et caractériser un signal</h3>
+                            <p><strong>Contexte :</strong> Ce projet se réalise en partiel autonomie à l’université durant plusieurs <strong>travaux pratiques</strong> et dirigés.</p>
+                            <p><strong>Objectif :</strong> L'objectif de ce projet est de nous faire découvrir la <strong>programmation Matlab</strong>.</p>
+                            <p><strong>Travail réalisé :</strong> Dans une première partie, je réalise une <strong>autoformation</strong> pour apprendre comment fonctionne le langage <strong>Matlab</strong>. Ensuite, je génère un <strong>signal sinusoïdal</strong> sous <strong>Matlab</strong>. Par la suite, je le multiplie par un autre signal puis j'affiche le résultat avec la fonction '<strong>plot</strong>'. Ensuite, j'ai à ma disposition un script qui permet de réaliser le <strong>spectre d'un signal</strong>, je l'applique donc à mon signal pour obtenir son spectre. Dans la deuxième partie du projet, je dois réaliser deux <strong>calculs d'intégrale</strong> de manière différentes. La première, la plus simple, est la méthode des <strong>rectangles</strong>. Je réalise les calculs théoriques puis je les applique sur <strong>Matlab</strong> pour obtenir le même résultat. La deuxième méthode est celle des <strong>trapèzes</strong>, je réalise donc mes calculs théoriques puis je les implémente dans <strong>Matlab</strong>. La troisième partie du projet consiste à calculer la <strong>valeur moyenne</strong> et <strong>efficace</strong> d'un <strong>signal sinusoïdal</strong> et <strong>carré</strong>. J'utilise donc la même méthode, je réalise mes calculs théoriques puis je les implémente dans mon code <strong>Matlab</strong>. La quatrième et dernière partie consiste à récupérer des données d'un <strong>travaux pratiques</strong> réalisé en <strong>télécommunication</strong> pour les implémenter dans <strong>Matlab</strong>. Je vais par la suite faire un <strong>lissage</strong> de ces données puis déterminer la <strong>bande occupée à -20 dB</strong>, je calcule la <strong>puissance du canal</strong> puis j'affiche le résultat.</p>
+                            <a href="CR/Tourret_Clément_SAE22.zip" class="btn button-color" download="SAE22_Tourret_Clement.zip">
+                                <i class="fa-solid fa-file-zipper"></i> Mon CR
+                            </a>
+                        </div>
+                        <img src="img/mathlab.jpg" alt="Matlab">
+                    </div>
+
+                    <!-- SAE 23 -->
+                    <div class="media-layout">
+                        <img src="img/SAE23.png" alt="SAE 23 Interface">
+                        <div class="media-content">
+                            <h3>SAE 23 : Mettre en place une solution informatique pour l'entreprise</h3>
+                            <p><strong>Contexte :</strong> Ce projet se réalise en autonomie à l’université durant plusieurs <strong>travaux pratiques</strong> et dirigés.</p>
+                            <p><strong>Objectif :</strong> Mettre en place un <strong>outil de support</strong> pour le <strong>service informatique</strong> de l’université. Créer un <strong>site web</strong> de <strong>gestion de tickets de support</strong>. Le site devrait contenir des informations disponibles pour tous les utilisateurs du système. Un utilisateur peut créer un ticket de support, suivre l’avancement de ses tickets de support, et supprimer un ticket de support via une <strong>base de données</strong>.</p>
+                            <p><strong>Travail réalisé :</strong> Nous disposons de deux dossiers, un <strong>frontend</strong> et un <strong>backend</strong>. Le frontend, qui nous a été fourni, correspond à la structure de la page web, donc aucune interaction n’est possible avec celui-ci. Pour ce faire, nous devons coder dans le dossier backend, c’est-à-dire que les informations qui seront exécutées dans ce dossier ne seront pas visibles par l’utilisateur du site. Dans un premier temps, nous devons comprendre le code donné pour pouvoir le structurer dans notre dossier backend. Une fois la base du dossier backend réalisée, nous devons ensuite créer une base de données sous le logiciel <strong>MongoDB</strong>. Pour ce faire, nous avons besoin, sous Windows, de <strong>MongoDB Atlas</strong>, qui est un superviseur de base de données, et de <strong>MongoDB Compass</strong>, qui nous permettra d’accéder à notre base de données.</p>
+                            <p><strong>Résultat :</strong> Le travail que j'ai réalisé est fonctionnel.</p>
+                            <a href="img/SAE23_Tourret_Clement.zip" class="btn button-color" download="SAE23_Tourret_Clement.zip">
+                                <i class="fa-solid fa-file-zipper"></i> Mon CR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Capsule Vidéo -->
+                    <div class="media-layout reverse">
+                        <div class="media-content">
+                            <h3>Capsule Vidéo pour les portes ouvertes</h3>
+                            <p><strong>Contexte :</strong> En tant qu'étudiant de premier semestre, j'ai été chargé de réaliser une vidéo capsule captivante pour présenter le programme Réseaux et Télécommunications lors des Journées Portes Ouvertes.</p>
+                            <p><strong>Objectif :</strong> Créer une vidéo captivante de 2 minutes 30 secondes environ pour présenter le programme Réseaux et Télécommunications aux futurs étudiants lors des Journées Portes Ouvertes.</p>
+                            <p><strong>Travail réalisé :</strong> J'ai soigneusement rédigé le scénario pour m'assurer qu'il transmettait efficacement l'essence du programme et captivait l'audience. Par la suite j'ai utilisé OBS Studio pour enregistrer la vidéo, en veillant à une qualité visuelle élevée et à un son clair. Enfin j'ai utilisé DaVinci Resolve pour monter la vidéo.</p>
+                            <p><strong>Résultat :</strong> Ma vidéo capsule a été fièrement sélectionnée pour être présentée lors des Journées Portes Ouvertes, présentant efficacement le programme Réseaux et Télécommunications aux futurs étudiants et recevant des commentaires positifs de la part des étudiants et des enseignants.</p>
+                        </div>
+                        <video src="img/Tourret_capsuleVideoJPO.mp4" controls></video>
+                    </div>
+
+                </div>
+
+                <!-- PROJETS BUT 2 -->
+                <div id="S2" class="content">
+
+                    <!-- SAE 31 -->
+                    <div class="media-layout">
+                        <img src="img/Se455158276ac49729a5a2e92e516f0339.webp" alt="SAE 31 Adalm-Pluto">
+                        <div class="media-content">
+                            <h3>SAE 31 : Étude et mise en œuvre d'un système de transmission</h3>
+                            <p><strong>Contexte :</strong> Ce projet a été réalisé au semestre 3 du BUT.</p>
+                            <p><strong>Objectif :</strong> L'objectif de ce projet était de réaliser des modulations de transmission de signal sous Matlab à l'aide d'un Adalm-Pluto.</p>
+                            <p><strong>Travail réalisé :</strong> Pour mener à bien ce projet, nous étions par groupe de deux. Nous avons réalisé des <strong>scripts</strong> pour effectuer des modulations <strong>AM</strong>, <strong>ASK</strong>, <strong>PSK</strong> et <strong>FSK</strong>. Par la suite, nous avons mis en place une <strong>transmission</strong> avec des <strong>Adalm-Pluto</strong>. Pour ce faire, nous avons émis une <strong>fréquence porteuse</strong> avec un Adalm-Pluto. Ensuite, nous avons réalisé une <strong>transmission entre les deux Adalm-Pluto</strong> en effectuant un <strong>décalage fréquentiel</strong>. Enfin, nous avons effectué une <strong>transmission FSK</strong> d'un texte en réalisant une <strong>démodulation du signal en réception</strong>.</p>
+                            <p><strong>Résultat :</strong> Nous avons bien réussi le projet et le <strong>professeur</strong> était satisfait de la <strong>présentation orale</strong> faite en fin de projet.</p>
+                            <a href="CR/SAE31_CR.zip" class="btn button-color" download="SAE31_CR.zip">
+                                <i class="fa-solid fa-file-zipper"></i> Mon CR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SAE 32 -->
+                    <div class="media-layout reverse">
+                        <div class="media-content">
+                            <h3>SAE 32 : Programmation d'une application de messagerie</h3>
+                            <p><strong>Contexte :</strong> Ce projet se réalise en autonomie par groupe de deux en deuxième année.</p>
+                            <p><strong>Objectif :</strong> L'objectif de ce projet est de créer une <strong>application de messagerie</strong> en <strong>Java</strong> sous <strong>Android Studio</strong>, comprenant un <strong>canal de discussion global</strong> entre tous les utilisateurs, qui conserve l’historique des messages.</p>
+                            <p><strong>Travail réalisé :</strong> Pour la réalisation de l'application, nous avons dans un premier temps rédigé un <strong>cahier des charges</strong>. Par la suite, j'ai codé la <strong>page de connexion</strong> et la <strong>page de création de compte</strong>. J'ai ensuite mis en place une <strong>base de données Firebase</strong> me permettant de stocker les <strong>utilisateurs</strong> avec leur <strong>nom d'utilisateur</strong> et leur <strong>mot de passe</strong>. La base de données me permet également de <strong>stocker les messages</strong> du canal de discussion. Pour finir, j'ai ajouté des <strong>éléments de design</strong> pour donner une <strong>identité visuelle</strong> à l'application.</p>
+                            <p><strong>Résultats :</strong> Notre application respectait notre <strong>cahier des charges</strong> et nous pouvions <strong>échanger en temps réel</strong> sur l'application. Le <strong>professeur</strong> de la matière était satisfait de mon <strong>travail</strong>.</p>
+                            <a href="CR/SAE32-TOURRET-JOBARD.zip" class="btn button-color" download="SAE32-TOURRET-JOBARD.zip">
+                                <i class="fa-solid fa-file-zipper"></i> Mon CR
+                            </a>
+                        </div>
+                        <img src="img/1_iraHUBVOkD3HnTLYoRWYDQ.png" alt="Android Studio Java">
+                    </div>
+
+                    <!-- SAE 41 -->
+                    <div class="media-layout">
+                        <img src="img/Kappa-Data-Vendor-Stormshield.png.webp" alt="Stormshield">
+                        <div class="media-content">
+                            <h3>SAE 41 : Projet Stormshield</h3>
+                            <p><strong>Contexte :</strong> Ce projet a été réalisé au semestre 4 du BUT.</p>
+                            <p><strong>Objectif :</strong> L'objectif est de réaliser la <strong>configuration</strong> d'un <strong>pare-feu virtuel Stormshield</strong> dans un <strong>petit réseau</strong>.</p>
+                            <p><strong>Travail réalisé :</strong> Ce projet a été réalisé par groupe de deux. Un <strong>réseau virtuel</strong> nous était mis à disposition, contenant un <strong>serveur</strong> possédant les services suivants : <strong>serveur web</strong>, <strong>serveur de messagerie</strong> et <strong>serveur FTP</strong>, situés dans un <strong>réseau DMZ</strong>. Nous disposions d’un <strong>ordinateur client</strong> dans un <strong>réseau privé</strong>, ayant pour <strong>passerelle</strong> notre pare-feu. Nous devions suivre une série de questions sur la <strong>configuration du pare-feu Stormshield</strong>. J’ai donc configuré des <strong>règles NAT</strong>, des <strong>règles de filtrage URL et SSL</strong>, ainsi que la mise en place d’un <strong>tunnel VPN</strong>.</p>
+                            <p><strong>Résultats :</strong> L’<strong>évaluation</strong> de ce projet s’est faite en plusieurs parties durant sa réalisation, et mes <strong>résultats</strong> ont constamment augmenté au fil du projet, passant de <strong>4/20</strong> au premier examen à <strong>13/20</strong> au dernier examen.</p>
+                            <a href="CR/TP-Stormshield-TOURRET-JOBARD.zip" class="btn button-color" download="TP-Stormshield-TOURRET-JOBARD.zip">
+                                <i class="fa-solid fa-file-zipper"></i> Mon CR
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- PROJETS BUT 3 -->
+                <div id="S3" class="content">
+
+                    <!-- SAE 51 -->
+                    <div class="media-layout">
+                        <img src="img/Capture d'écran 2026-02-24 142935.png" alt="Architecture XiVO">
+                        <div class="media-content">
+                            <h3>SAE 51 : Mise en place d'un réseaux contenant un call serveur Xivo</h3>
+                            <p><strong>Contexte :</strong> Ce projet a été réalisé au semestre 5 du BUT en tant que formation initiale de la formation.</p>
+                            <p><strong>Objectif :</strong> L'objectif est de réaliser un petit réseau sécurisé en groupe de 3 contenant un serveur d'appel XiVO en utilisant l'application cliente XiVO Assistant.</p>
+                            <p><strong>Travail réalisé :</strong> Dans le cadre de ce projet, j'ai conçu et déployé une <strong>infrastructure réseau complète</strong> dédiée aux <strong>communications unifiées</strong>. Mon travail a consisté à mettre en place une architecture de six machines interconnectées, articulée autour d'un serveur de téléphonie <strong>XiVO</strong> sous <strong>Debian</strong> et d'un contrôleur de domaine <strong>Active Directory</strong> sous <strong>Windows Server</strong> pour la gestion centralisée des utilisateurs. Au-delà de l'installation des systèmes, j'ai assuré l'<strong>interopérabilité</strong> entre les services et mis l'accent sur la <strong>sécurité opérationnelle</strong>. J'ai notamment configuré des <strong>règles de filtrage réseau</strong> et déployé la solution <strong>Splunk</strong> pour centraliser les <strong>journaux d'événements</strong>, garantissant ainsi la <strong>traçabilité</strong> et la <strong>supervision</strong> constante de l'ensemble de l'infrastructure. Ce projet m'a permis de mobiliser des compétences transversales en <strong>administration système</strong>, <strong>réseaux</strong> et <strong>cybersécurité</strong>.</p>
+                            <a href="CR/Rapport_final_SAE 501_NDIAYE_TOURRET_LOURAIBI.pdf" class="btn button-color" download="SAE51-Rapport.pdf">
+                                <i class="fa-solid fa-file-pdf"></i> Mon CR
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- SAE 53 -->
+                    <div class="media-layout reverse">
+                        <div class="media-content">
+                            <h3>SAE 53 : Sécurisation avancée et supervision d’un système d’information</h3>
+                            <p><strong>Contexte :</strong> Ce projet a été réalisé au semestre 5 du BUT en groupe de 3 personnes.</p>
+                            <p><strong>Objectif :</strong> Dans le cadre de la SAE5.Cyber.03, l’objectif est de concevoir une maquette représentative d’une problématique de sécurité informatique, d’y exécuter un scénario d’attaque réaliste, de démontrer sa détection à l’aide d’outils de supervision, puis de mettre en place des mesures de sécurisation permettant de limiter ou bloquer cette attaque.</p>
+                            <p><strong>Travail réalisé :</strong> Au cours de ce projet, j'ai <strong>conçu</strong>, <strong>sécurisé</strong> et <strong>audité</strong> une <strong>infrastructure serveur</strong> sous <strong>Linux (Debian)</strong>. J'ai d'abord renforcé la sécurité du système (<strong>hardening</strong>) en configurant une <strong>authentification forte</strong> sur <strong>SSH</strong> (<strong>2FA</strong> avec modules <strong>PAM</strong>) et en corrigeant les <strong>permissions critiques</strong> pour prévenir les <strong>escalades de privilèges</strong>. Pour la <strong>supervision (Blue Team)</strong>, j'ai déployé des agents <strong>Splunk</strong> afin de <strong>centraliser l'analyse des logs</strong> et de <strong>tracer les incidents</strong>, tout en mettant en place l'EDR <strong>Velociraptor</strong> pour <strong>isoler et mettre en quarantaine</strong> les machines compromises via des règles de <strong>pare-feu (UFW/iptables)</strong>. Enfin, j'ai adopté une <strong>approche offensive (Red Team)</strong> en utilisant <strong>Metasploit</strong> et <strong>Python</strong> pour <strong>auditer la surface d'attaque</strong>, tester la robustesse des configurations et simuler des <strong>compromissions locales</strong> (tâches <strong>Cron</strong>).</p>
+                            <p><strong>Résultats :</strong> Notre scénario d'attaque était complexe et nos mesures de défense utilisées ont satisfait notre professeur.</p>
+                            <a href="CR/SAE53-RAPPORT (1).pdf" class="btn button-color" download="SAE53-Rapport.pdf">
+                                <i class="fa-solid fa-file-pdf"></i> Mon CR
+                            </a>
+                        </div>
+                        <img src="img/Capture d'écran 2026-02-24 142515.png" alt="Supervision et Sécurité">
+                    </div>
+
+                    <!-- NOUVEL EMPLACEMENT : Projet BUT3 (Image à gauche, Texte à droite) -->
+                    <div class="media-layout">
+                        <img src="images.png" alt="Forensic">
+                        <div class="media-content">
+                            <h3>SAE 61 Réagir face à une cyber-attaque</h3>
+                            <p><strong>Contexte :</strong> Ce projet a été <strong>réalisé seul</strong> au cours du <strong>semestre 6</strong> de la formation <strong>Réseaux et Télécommunications</strong>.</p>
+                            <p><strong>Objectif :</strong> L'objectif de ce projet était de réaliser une <strong>investigation numérique</strong> (<em>forensic</em>) portant sur <strong>deux sujets</strong>, suivie d'un <strong>oral technique</strong>.</p>
+                            <p><strong>Travail réalisé :</strong> Au cours de ce projet, j'ai réalisé une <strong>analyse <em>forensic</em></strong> sur <strong>deux sujets différents</strong>. J'ai utilisé les commandes de <strong>RegRipper</strong> pour faire une <strong>analyse de disque</strong>. Par la suite, j'ai employé les commandes de <strong>Volatility</strong> pour mener une <strong>analyse mémoire</strong> du poste infecté par l'attaque. J'ai ainsi pu répondre à l'<strong>ensemble des questions posées</strong> dans les cas pratiques et réussir la <strong>soutenance technique</strong>.</p>
+                            <p><strong>Résultat :</strong> Le <strong>professeur</strong> était <strong>satisfait de mes réponses</strong> lors de la <strong>soutenance</strong> et j'ai obtenu la <strong>note de 15,5/20</strong>.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION : DIVERS -->
+        <section id="divers">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-icons"></i> Divers</h2>
+                <hr>
+            </div>
+
+            <div class="media-layout">
+                <img src="img/916R9qiMCOL._UF1000,1000_QL80_.jpg" alt="Imagine Dragons Evolve">
+                <div class="media-content">
+                    <h3>Divers</h3>
+                    <p>Je suis actuellement l'actualité de l'astronomie.</p>
+                    <p>J'écoute principalement de la musique de style pop/électro, notamment celle du groupe Imagine Dragons. Ce groupe a fait ses débuts en 2008. Il est composé du chanteur Dan Reynolds, du batteur Andrew Tolman, ainsi que de deux musiciens, Andrew Beck et Dave Lemke, et d'Aurora Florence, qui joue de la guitare, de la basse et du piano. Ils ont réalisé cinq albums. Mon album préféré est Evolve, leur troisième album, sorti en 2017.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION : CONTACT -->
+        <section id="contact">
+            <div class="section-header">
+                <h2 class="section-title"><i class="fa-solid fa-envelope"></i> Contact</h2>
+                <hr>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <h4>Mail</h4>
+                        <a>clement.tourret@etu.uca.fr</a>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon" style="background: var(--emerald-soft); color: var(--emerald);"><i class="fa-solid fa-phone"></i></div>
+                    <div class="contact-info">
+                        <h4>Tél</h4>
+                        <a>07 81 78 23 12</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Clément Tourret — Portfolio BUT Réseaux & Télécoms (Cybersécurité).</p>
+        </div>
+    </footer>
+
+    <!-- Script des onglets Projets -->
+    <script>
+        function showTab(tabElement, tabId) {
+            // Masquer tous les contenus et afficher l'onglet actif
+            document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+            const targetContent = document.getElementById(tabId);
+            if (targetContent) {
+                targetContent.classList.add('active');
+            }
+
+            // Mettre à jour l'état actif sur les liens
+            document.querySelectorAll('.tab-link').forEach(t => t.classList.remove('active'));
+            tabElement.classList.add('active');
+
+            // Déplacer l'indicateur animé
+            updateIndicator(tabElement);
+        }
+
+        function updateIndicator(activeElement) {
+            const indicator = document.getElementById('indicator');
+            if (indicator && activeElement) {
+                indicator.style.width = activeElement.offsetWidth + 'px';
+                indicator.style.left = activeElement.offsetLeft + 'px';
+            }
+        }
+
+        // Initialisation de l'indicateur au chargement et au redimensionnement
+        window.addEventListener('load', () => {
+            const activeTab = document.querySelector('.tab-link.active');
+            if (activeTab) updateIndicator(activeTab);
+        });
+
+        window.addEventListener('resize', () => {
+            const activeTab = document.querySelector('.tab-link.active');
+            if (activeTab) updateIndicator(activeTab);
+        });
+    </script>
+</body>
+</html>
